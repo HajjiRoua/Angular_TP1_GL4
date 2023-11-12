@@ -1,0 +1,15 @@
+<div class="cv-embauche" *ngIf="cv.length!=0">
+  Liste des personnes pré sélectionnés
+  <div class="elements">
+    <div *ngFor="let e of cv">
+      <img
+        class="rounded-circle"
+        width="50px"
+        heigth="50px"
+        src="assets/images/{{ e.path | defaultImage }}"
+        alt="{{ e.name }}"
+      />
+      {{ e.firstname }} {{ e.name }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a
+      class="navbar-brand"
+      [routerLink]="['']"
+      [routerLinkActiveOptions]="{ exact: true }"
+      routerLinkActive="active text-primary"
+      >cvStartingAdvProject</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="['']navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a
+          class="nav-link"
+          aria-current="page"
+          [routerLink]="['cv']"
+          routerLinkActive="active text-primary"
+          >Cv</a
+        >
+      </div>
+      <div class="navbar-nav"  *ngIf="!authenticated">
+        <a
+          class="nav-link"
+          aria-current="page"
+          [routerLink]="['login']"
+          routerLinkActive="active text-primary"
+        >LogIn</a
+        >
+      </div>
+
+      <div class="navbar-nav"  *ngIf="authenticated" >
+        <a
+          class="nav-link"
+          aria-current="page"
+          routerLinkActive="active text-primary"
+          (click)="logout()"
+        >LogOut</a
+        >
+      </div>
+    </div>
+  </div>
+</nav>

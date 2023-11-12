@@ -1,0 +1,12 @@
+.cv-embauche{
+  border : 2px solid blue;
+  border-radius : 25px;
+  padding : 10px;
+}
+
+
+.elements{
+  display: flex;
+  justify-content: start;
+
+}
