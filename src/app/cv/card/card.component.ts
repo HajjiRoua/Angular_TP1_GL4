@@ -30,6 +30,8 @@ export class CardComponent {
     const checker = this.embaucheService.addCv(this.cv!)
     if (!checker){
       this.toastr.show(this.cv!.name+ " est déja embauché")
+    }else {
+      this.toastr.show(this.cv!.name + "est embauché")
     }
   }
 

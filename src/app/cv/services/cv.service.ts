@@ -1,4 +1,4 @@
-import {catchError, Observable, Subject, tap} from "rxjs";
+import {catchError, map, Observable, Subject, tap} from "rxjs";
 import { Cv } from "../model/cv";
 import { Injectable } from "@angular/core";
 import {MES_CONSTANTES} from "../../config/constantes.config";
@@ -25,10 +25,10 @@ export class CvService {
     ) {
   }
 
-  getCvs(){
-    return this.httpClient.get(
+  getCvs() : Observable<Cv[]>{
+    return this.httpClient.get<Cv[]>(
       MES_CONSTANTES.url
-    )
+    );
   }
 
   setCvs(cvs : Cv[]){

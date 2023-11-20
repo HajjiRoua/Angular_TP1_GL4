@@ -21,6 +21,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ToastrModule} from "ngx-toastr";
 import { ListCvEmbaucheComponent } from './cv/list-cv-embauche/list-cv-embauche.component';
 import { LoginComponent } from './login/login.component';
+import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 
 @NgModule({
   declarations: [
@@ -39,13 +40,14 @@ import { LoginComponent } from './login/login.component';
     NF404Component,
     ListCvEmbaucheComponent,
     LoginComponent,
+    AutocompleteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     ReactiveFormsModule,
   ],

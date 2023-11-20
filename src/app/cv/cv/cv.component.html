@@ -1,6 +1,18 @@
 <div class="row">
   <div class="col">
-    <app-list [cvs]="cvs"></app-list>
+
+
+    <app-autocomplete></app-autocomplete>
+
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <div style="cursor:pointer" class="nav-link" (click)="setJunior()">Junior</div>
+      </li>
+      <li class="nav-item">
+        <div style="cursor:pointer" class="nav-link" (click)="setSenior()">Senior</div>
+      </li>
+    </ul>
+    <app-list  [cvs]="isJunior ? (juniorCvObservable$ | async)! : (seniorCvObservable$ | async)!"></app-list>
     <app-list-cv-embauche></app-list-cv-embauche>
   </div>
   <div class="col">
