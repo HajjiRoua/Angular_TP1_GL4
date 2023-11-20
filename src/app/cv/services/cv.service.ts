@@ -56,5 +56,17 @@ export class CvService {
     )
   }
 
+  findByName(name : string): Observable<Cv[]>{
+    const filter = {
+      where: {
+        name: {
+          like: `%${name}%`
+      }
+    }
+  }
+    const urlWithFilter = MES_CONSTANTES.url+`/?filter=${encodeURIComponent(JSON.stringify(filter))}`;
+
+    return this.httpClient.get<Cv[]>(urlWithFilter);
+  }
 
 }
