@@ -7,6 +7,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NF404Component } from './components/nf404/nf404.component';
 import {DetailCvComponent} from "./cv/detail-cv/detail-cv.component";
 import {LoginComponent} from "./login/login.component";
+import { MergeComponent } from './components/merge/merge.component';
 // pipe
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +29,8 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
   },
+  {path: 'merge' , component: MergeComponent},
+
   { path: '**', component: NF404Component },
 ];
 

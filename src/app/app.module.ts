@@ -22,6 +22,7 @@ import {ToastrModule} from "ngx-toastr";
 import { ListCvEmbaucheComponent } from './cv/list-cv-embauche/list-cv-embauche.component';
 import { LoginComponent } from './login/login.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { MergeComponent } from './components/merge/merge.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
     ListCvEmbaucheComponent,
     LoginComponent,
     AutocompleteComponent,
+    MergeComponent,
   ],
   imports: [
     BrowserModule,
