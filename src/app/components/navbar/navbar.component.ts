@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {LoginServiceService} from "../../login/loginService/login-service.service";
+import {LoginService} from "../../login/loginService/login.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,10 +11,9 @@ export class NavbarComponent {
   authenticated :Boolean = false;
 
   constructor(
-    private loginService : LoginServiceService,
-    private router : Router,
+    private loginService : LoginService,
   ) {
-    this.loginService.loginStateAsObservable$.subscribe(
+    this.loginService.loggedIn$.subscribe(
       (value => {
         this.authenticated=value
       })
@@ -22,12 +21,7 @@ export class NavbarComponent {
   }
 
   logout(){
-    this.loginService.emitAuthentication(false)
-    this.authenticated=false;
-    const link = ['login'];
-    this.router.navigate(link);
-    localStorage.removeItem("person");
-
+    this.loginService.logout()
   }
 
 

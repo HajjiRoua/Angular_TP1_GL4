@@ -27,9 +27,7 @@ export class CardComponent {
   }
 
   onEmbaucheClicked(){
-    console.log("clicked")
     const checker = this.embaucheService.addCv(this.cv!)
-    console.log(checker)
     if (!checker){
       this.toastr.show(this.cv!.name+ " est déja embauché")
     }

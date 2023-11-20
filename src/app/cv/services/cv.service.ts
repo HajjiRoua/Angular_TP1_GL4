@@ -1,6 +1,9 @@
-import { Subject } from "rxjs";
+import {catchError, Observable, Subject, tap} from "rxjs";
 import { Cv } from "../model/cv";
 import { Injectable } from "@angular/core";
+import {MES_CONSTANTES} from "../../config/constantes.config";
+import {HttpClient} from "@angular/common/http";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({ providedIn: "root" })
 export class CvService {
@@ -17,32 +20,41 @@ export class CvService {
     new Cv(6, "Mourali", "test2", ""),
   ];
 
-  constructor() {
+  constructor(
+    private httpClient : HttpClient,
+    ) {
   }
 
-
-  getDefaultCvs(){
-    return this.defaultCv
-  }
-  getCvs() {
-    return this.cvs;
-  }
-
-  selectCv(cv: Cv) {
-    this.selectCvSubject.next(cv);
+  getCvs(){
+    return this.httpClient.get(
+      MES_CONSTANTES.url
+    )
   }
 
   setCvs(cvs : Cv[]){
     this.cvs=cvs
   }
 
-
-  getCvById(id:number): Cv|undefined{
-        const cv = this.cvs.find( cv => {
-        cv.id==id
-      });
-      return cv;
-
-
+  getDefaultCvs() {
+    return this.defaultCv;
   }
+
+  selectCv(cv: Cv) {
+    this.selectCvSubject.next(cv);
+  }
+
+
+  getCvById(id : string){
+    return this.httpClient.get(
+      MES_CONSTANTES.url + "/" +id
+    )
+  }
+
+  deleteCv(id : string){
+    return this.httpClient.delete(
+      MES_CONSTANTES.url + "/" +id
+    )
+  }
+
+
 }

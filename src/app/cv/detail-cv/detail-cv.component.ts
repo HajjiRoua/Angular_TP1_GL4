@@ -22,40 +22,31 @@ export class DetailCvComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.activatedRouter.params.subscribe(
-      (params) => {
-    this.httpClient.get(
-      MES_CONSTANTES.url + "/" +params['id']
-    ).subscribe(
-      (cv) => {
-
-        this.cv = cv as Cv;
-        console.log(cv)
-      },
-      (error) => {
-        this.toastr.error("An error Occured While fetching Data")
+    const id = this.activatedRouter.snapshot.params["id"]
+    this.cvService.getCvById(id).subscribe(
+      {
+        next : (cv) => {
+          this.cv = cv as Cv;
+        },
+        error: (error) => {
+          this.toastr.error("An error Occured While fetching Data")
+        }
       }
     )
   }
-    )}
 
   deleteCv(): void {
-    this.activatedRouter.params.subscribe(
-      (params) => {
-        this.httpClient.delete(
-          MES_CONSTANTES.url + "/" +params['id']
-        ).subscribe(
-          () => {
-            const link = ['cv'];
-            this.router.navigate(link);
-            alert("DELETED")
-          },
-          (error) => {
-            this.toastr.error("An error Occured While deleting Data")
-          }
-        )
+    const id = this.activatedRouter.snapshot.params["id"]
+    this.cvService.deleteCv(id).subscribe({
+      next : () => {
+        const link = ['cv'];
+        this.router.navigate(link);
+        alert("DELETED")
+      },
+      error : (error) => {
+        console.log(error)
+        this.toastr.error("An error Occured While deleting Data")
       }
-    )
+    })
   }
 }

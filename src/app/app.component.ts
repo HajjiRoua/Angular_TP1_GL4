@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginServiceService} from "./login/loginService/login-service.service";
+import {LoginService} from "./login/loginService/login.service";
 
 @Component({
   selector: 'app-root',
@@ -11,15 +11,12 @@ export class AppComponent implements OnInit{
 
 
   constructor(
-    private loginService : LoginServiceService
+    private loginService : LoginService
   ) {
   }
 
   ngOnInit(): void {
-    const person = localStorage.getItem("person")
-    if (person){
-      this.loginService.emitAuthentication(true)
-    }
+    this.loginService.refreshAuthState()
   }
 
 
