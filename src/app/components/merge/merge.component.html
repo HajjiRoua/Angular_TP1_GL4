@@ -1,18 +1,19 @@
-<input type="number" class="form-control" [formControl]="field1" (blur)="ChangeFirstStream" >
-<button class="btn btn-danger" style="margin-bottom: 2%;" (click)="TerminateFirstStream">
-    Terminate Steam 1
-</button>
-<input type="number" class="form-control"  [formControl]="field2" (blur)="ChangeSecondStream" >
-<button class="btn btn-danger" style="margin-bottom: 2%;" (click)="TerminateSecondStream">
-    Terminate Steam 2
-</button>
+<form [formGroup]="form">
+    <input type="number" class="form-control" formControlName="field1"  >
+    <button class="btn btn-danger" style="margin-bottom: 2%;" (click)="terminateFirstStream()">
+        Terminate Steam 1
+    </button>
+    <input type="number" class="form-control" formControlName="field2" >
+    <button class="btn btn-danger" style="margin-bottom: 2%;" (click)="terminateSecondStream()">
+        Terminate Steam 2
+    </button>
+</form>
 <div >
-Merge : {{ merged$ | async }}
+    Merge : {{ merged$ | async }}
 </div>
 <div >
-Scan : {{ scanned$ | async }}
+    Scan : {{ scanned$ | async }}
 </div>
 <div >
-Reduce : {{ reduced$ | async }}
+    Reduce : {{ reduced$ | async }}
 </div>
-            

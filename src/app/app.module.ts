@@ -23,6 +23,7 @@ import { ListCvEmbaucheComponent } from './cv/list-cv-embauche/list-cv-embauche.
 import { LoginComponent } from './login/login.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { MergeComponent } from './components/merge/merge.component';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MergeComponent } from './components/merge/merge.component';
     LoginComponent,
     AutocompleteComponent,
     MergeComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
