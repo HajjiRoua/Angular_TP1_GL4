@@ -8,6 +8,9 @@ import {DetailCvComponent} from "./cv/detail-cv/detail-cv.component";
 import {LoginComponent} from "./login/login.component";
 import {MergeComponent} from "./components/merge/merge.component";
 import {ProductsComponent} from "./components/products/products.component";
+import {MasterDetailsComponent} from "./cv/master-details/master-details.component";
+import {cvListResolver} from "./cv/resolver/cv-list.resolver";
+import {cvDetailsResolver} from "./cv/resolver/cv-details.resolver";
 
 // pipe
 const routes: Routes = [
@@ -16,11 +19,25 @@ const routes: Routes = [
     children :
       [
         {path : '' ,
-          component: CvComponent },
+          component: CvComponent , resolve : {cvs : cvListResolver}
+        },
+        {
+            path : 'list',
+            component : MasterDetailsComponent,
+            resolve : { cvs : cvListResolver },
+            children : [
+                {
+                    path : ':id',
+                    resolve : {cv : cvDetailsResolver},
+                    component : DetailCvComponent
+                }
+            ]
+        },
 
         {
           path: ':id',
-          component: DetailCvComponent
+          component: DetailCvComponent,
+            resolve : {cv : cvDetailsResolver}
         },
       ]
   },

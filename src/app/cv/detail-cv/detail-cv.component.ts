@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component,  OnInit} from '@angular/core';
 import { Cv } from '../model/cv';
 import {CvService} from "../services/cv.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {MES_CONSTANTES} from "../../config/constantes.config";
 import {HttpClient} from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
 
@@ -22,17 +21,22 @@ export class DetailCvComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.activatedRouter.snapshot.params["id"]
-    this.cvService.getCvById(id).subscribe(
-      {
-        next : (cv) => {
-          this.cv = cv as Cv;
-        },
-        error: (error) => {
-          this.toastr.error("An error Occured While fetching Data")
-        }
-      }
-    )
+    // const id = this.activatedRouter.snapshot.params["id"]
+    // this.cvService.getCvById(id).subscribe(
+    //   {
+    //     next : (cv) => {
+    //       this.cv = cv as Cv;
+    //     },
+    //     error: (error) => {
+    //       this.toastr.error("An error Occured While fetching Data")
+    //     }
+    //   }
+    // )
+      this.activatedRouter.data.subscribe(
+          (value)=>{
+              this.cv=value['cv']
+          }
+      )
   }
 
   deleteCv(): void {
