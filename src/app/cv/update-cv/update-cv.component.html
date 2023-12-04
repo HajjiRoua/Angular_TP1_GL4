@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <h2 class="text-center">Update CV</h2>
+    <form (ngSubmit)="updateCv(cv)" class="needs-validation" novalidate>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" [(ngModel)]="cv.name" name="name" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" [(ngModel)]="cv.firstname" name="firstname" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="path">Path:</label>
+        <input type="text" id="path" [(ngModel)]="cv.path" name="path" class="form-control" >
+      </div>
+  
+      <div class="form-group">
+        <label for="cin">CIN:</label>
+        <input type="number" id="cin" [(ngModel)]="cv.cin" name="cin" class="form-control" >
+      </div>
+  
+      <div class="form-group">
+        <label for="job">Job:</label>
+        <input type="text" id="job" [(ngModel)]="cv.job" name="job" class="form-control" >
+      </div>
+  
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" [(ngModel)]="cv.age" name="age" class="form-control" >
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Update CV</button>
+    </form>
+  </div>
+  

@@ -24,6 +24,8 @@ import { LoginComponent } from './login/login.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { MergeComponent } from './components/merge/merge.component';
 import { ProductsComponent } from './components/products/products.component';
+import { UpdateCvComponent } from './cv/update-cv/update-cv.component';
+import { AddCvComponent } from './cv/add-cv/add-cv.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { ProductsComponent } from './components/products/products.component';
     AutocompleteComponent,
     MergeComponent,
     ProductsComponent,
+    UpdateCvComponent,
+    AddCvComponent,
   ],
   imports: [
     BrowserModule,
