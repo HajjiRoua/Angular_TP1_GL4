@@ -16,10 +16,12 @@ export class TokenInjectionInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('AuthToken');
     if (token) {
+      const tokenObject = JSON.parse(token);
+
       const cloneRequest = request.clone({
-        params: request.params.set('access_token', token),
+        params: request.params.set('access_token', tokenObject.token),
       });
       return next.handle(cloneRequest);
     } else {

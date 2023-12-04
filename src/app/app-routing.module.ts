@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { CanDeactivate, RouterModule, Routes } from '@angular/router';
 import { CvComponent } from './cv/cv/cv.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -20,7 +20,11 @@ const routes: Routes = [
   {
     path: 'cv',
     children: [
-      { path: '', component: CvComponent, resolve: { cvs: cvListResolver } },
+      {
+        path: '',
+        component: CvComponent,
+        resolve: { cvs: cvListResolver },
+      },
       {
         path: 'list',
         component: MasterDetailsComponent,
@@ -33,7 +37,10 @@ const routes: Routes = [
           },
         ],
       },
-      { path: 'add', component: AddCvComponent },
+      {
+        path: 'add',
+        component: AddCvComponent,
+      },
       {
         path: 'update/:id',
         component: UpdateCvComponent,

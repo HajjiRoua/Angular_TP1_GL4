@@ -13,22 +13,22 @@
   
       <div class="form-group">
         <label for="path">Path:</label>
-        <input type="text" id="path" [(ngModel)]="cv.path" name="path" class="form-control" >
+        <input type="text" id="path" [(ngModel)]="cv.path" name="path" class="form-control" required>
       </div>
   
       <div class="form-group">
         <label for="cin">CIN:</label>
-        <input type="number" id="cin" [(ngModel)]="cv.cin" name="cin" class="form-control" >
+        <input type="number" id="cin" [(ngModel)]="cv.cin" name="cin" class="form-control" required>
       </div>
   
       <div class="form-group">
         <label for="job">Job:</label>
-        <input type="text" id="job" [(ngModel)]="cv.job" name="job" class="form-control" >
+        <input type="text" id="job" [(ngModel)]="cv.job" name="job" class="form-control" required>
       </div>
   
       <div class="form-group">
         <label for="age">Age:</label>
-        <input type="number" id="age" [(ngModel)]="cv.age" name="age" class="form-control" >
+        <input type="number" id="age" [(ngModel)]="cv.age" name="age" class="form-control" required>
       </div>
   
       <button type="submit" class="btn btn-primary">Add CV</button>
