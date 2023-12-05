@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ProductsService} from "./services/products.service";
-import {BehaviorSubject, Observable, scan, switchMap} from "rxjs";
+import {BehaviorSubject, concatMap, Observable, scan, switchMap} from "rxjs";
 import {Product} from "./model/product";
 
 @Component({
@@ -20,7 +20,7 @@ export class ProductsComponent {
         private productService : ProductsService
     ) {
         this.products$=this.numberOfProducts.pipe(
-            switchMap((value)=> this.productService.getProducts(12,value)),
+            concatMap((value)=> this.productService.getProducts(12,value)),
             scan((previous,cur)=>[
                 ...previous,...cur
             ])

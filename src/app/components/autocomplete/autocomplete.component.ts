@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {CvService} from "../../cv/services/cv.service";
-import {distinctUntilChanged, Observable} from "rxjs";
+import {debounce, debounceTime, distinctUntilChanged, Observable, switchMap} from "rxjs";
 import {Cv} from "../../cv/model/cv";
 
 @Component({
@@ -20,11 +20,12 @@ export class AutocompleteComponent {
     this.form = new FormGroup({
       search : new FormControl()
     })
-    this.form.valueChanges.subscribe(
-      (value)=>{
-        this.filteredCv=this.cvService.findByName(value.search).pipe(distinctUntilChanged())
-      }
+    this.filteredCv =this.form.valueChanges.pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap( (value) => this.cvService.findByName(value))
     )
+
   }
 
 
