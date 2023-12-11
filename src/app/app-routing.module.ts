@@ -13,6 +13,8 @@ import { AddCvComponent } from './cv/add-cv/add-cv.component';
 import { MasterDetailsComponent } from './cv/master-details/master-details.component';
 import { cvListResolver } from './cv/resolver/cv-list.resolver';
 import { cvDetailsResolver } from './cv/resolver/cv-details.resolver';
+import {authGuard} from "./login/auth.guard";
+import {exitGuard} from "./cv/add-cv/exit.guard";
 
 // pipe
 const routes: Routes = [
@@ -40,6 +42,8 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddCvComponent,
+        canActivate : [authGuard],
+        canDeactivate : [exitGuard]
       },
       {
         path: 'update/:id',

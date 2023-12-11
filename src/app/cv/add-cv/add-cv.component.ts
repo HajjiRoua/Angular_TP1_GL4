@@ -3,13 +3,15 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CvService } from '../services/cv.service';
 import { addCvDto } from '../model/addCv';
+import {CanDeactivateComponent} from "./exit.guard";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-add-cv',
   templateUrl: './add-cv.component.html',
   styleUrls: ['./add-cv.component.css'],
 })
-export class AddCvComponent implements OnInit {
+export class AddCvComponent implements OnInit , CanDeactivateComponent {
   cv: addCvDto;
   constructor(
     private cvService: CvService,
@@ -20,7 +22,6 @@ export class AddCvComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('adding a cv');
   }
 
   addCv(): void {
@@ -28,12 +29,15 @@ export class AddCvComponent implements OnInit {
       next: () => {
         const link = ['cv'];
         this.router.navigate(link);
-        alert('ADDED');
       },
       error: (error) => {
         console.log(error);
         this.toastr.error('an error has occured when adding a cv');
       },
     });
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    return !this.cv.isNotEmpty();
   }
 }
