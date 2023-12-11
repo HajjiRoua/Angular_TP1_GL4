@@ -51,6 +51,7 @@ export class LoginService {
     }
     localStorage.removeItem('AuthToken');
     localStorage.removeItem('AuthUser');
+    this.loggedIn.next(false)
     this.refreshAuthState()
     return true
   }

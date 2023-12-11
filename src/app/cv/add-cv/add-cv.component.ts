@@ -38,6 +38,10 @@ export class AddCvComponent implements OnInit , CanDeactivateComponent {
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-    return !this.cv.isNotEmpty();
+    if(this.cv.isNotEmpty()){
+      return window.confirm("The form is not empty , do you really want to leave")
+    }else {
+      return true
+    }
   }
 }

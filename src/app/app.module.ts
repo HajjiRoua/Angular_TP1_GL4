@@ -20,7 +20,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { ListCvEmbaucheComponent } from './cv/list-cv-embauche/list-cv-embauche.component';
-import { LoginComponent } from './login/login.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 import { MergeComponent } from './components/merge/merge.component';
 import { ProductsComponent } from './components/products/products.component';
@@ -31,25 +30,13 @@ import { tokenInjectionInterceptorProvider } from './token-injection.interceptor
 @NgModule({
   declarations: [
     AppComponent,
-    CvComponent,
-    ListComponent,
-    ItemComponent,
-    CardComponent,
-    DefaultImagePipe,
     NavbarComponent,
     HomeComponent,
     FrontComponent,
     AdminComponent,
-    MasterDetailsComponent,
-    DetailCvComponent,
     NF404Component,
-    ListCvEmbaucheComponent,
-    LoginComponent,
-    AutocompleteComponent,
     MergeComponent,
     ProductsComponent,
-    UpdateCvComponent,
-    AddCvComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +47,7 @@ import { tokenInjectionInterceptorProvider } from './token-injection.interceptor
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [LoginComponent, tokenInjectionInterceptorProvider],
+  providers: [tokenInjectionInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
